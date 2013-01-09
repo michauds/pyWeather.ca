@@ -1,20 +1,23 @@
 import xml.dom.minidom 
 import string
 import urllib2
-import sys
 import Cities
 
+## Looks up city in dictionnary for URL,
+## @return xml data
+def getData(city):
+	req = urllib2.Request(Cities.cities[city])
+	response = urllib2.urlopen(req)
+	data = xml.dom.minidom.parseString(response.read())
+	return data
+
 ## Fetches appropriate info from Environment Canada RSS Feed and formats output
-def getTemp(data):
+## @return [condition] temperature
+def getTemp(city):
+	data = getData(city)
 	nodelist = data.getElementsByTagName("title")
 	for node in nodelist:
 		if "Current Conditions:" in node.firstChild.nodeValue:
 			s = string.split(node.firstChild.nodeValue, ": ", -1)
-			print s[1]
-
-#
-city = sys.argv[1]
-req = urllib2.Request(Cities.cities[city])
-response = urllib2.urlopen(req)
-xml = xml.dom.minidom.parseString(response.read())
-getTemp(xml)
+			data.unlink()
+			return s[1]
