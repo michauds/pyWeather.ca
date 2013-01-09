@@ -1,4 +1,4 @@
 weatherWidget
 =============
 
-weather data fetcher for Canada cities
+weather data fetcher for Canadian cities
