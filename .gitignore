@@ -1,3 +1,4 @@
 # compiled stuffs
 *.pyc
 bin/*.pyc
+*.exe
