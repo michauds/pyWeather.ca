@@ -11,7 +11,7 @@ def dict_lookup(city):
 	request = urllib2.Request(Cities.cities[city])
 	
 	# Fetch xml file from Environment Canada site
-	response = urllib2.urlopen(req)
+	response = urllib2.urlopen(request)
 	
 	xml_blob = xml.dom.minidom.parseString(response.read())
 	
@@ -19,10 +19,10 @@ def dict_lookup(city):
 
 ## Fetches appropriate info from Environment Canada RSS Feed and formats output
 ## @return [condition] temperature
-def getTemp(city):
+def get_temperature(city):
 	
-	xml_blob = getData(city)
-	node_list = data.getElementsByTagName("title")
+	xml_blob = dict_lookup(city)
+	node_list = xml_blob.getElementsByTagName("title")
 	
 	for node in node_list:
 		
