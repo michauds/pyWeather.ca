@@ -2,5 +2,6 @@ weatherWidget
 =============
 
 weather data fetcher for Canadian cities
-
-working on the kinks. Fetches data, need to make everything pretty...
+[x] Fetch data from Environment Canada
+[ ] Complete dictionary
+[ ] Create a pretty GUI 
