@@ -2,3 +2,5 @@
 *.pyc
 bin/*.pyc
 *.exe
+/dist/
+*.egg-info

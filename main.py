@@ -1,3 +1,7 @@
-import weather_man
+import os
 
-print weather_man.fetchTemp.get_temperature("Montreal")
+os.chdir('pyweather')
+
+import pyweather
+
+

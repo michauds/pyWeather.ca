@@ -1,14 +1,13 @@
 import xml.dom.minidom 
 import string
 import urllib2
-import Cities
 
 ## Looks up city in dictionnary for URL,
 ## @return xml data
-def dict_lookup(city):
+def data_retriever(url_path):
 	
 	# Lookup in dictionnary for URL associated to city name
-	request = urllib2.Request(Cities.cities[city])
+	request = urllib2.Request(url_path)
 	
 	# Fetch xml file from Environment Canada site
 	response = urllib2.urlopen(request)
@@ -19,9 +18,9 @@ def dict_lookup(city):
 
 ## Fetches appropriate info from Environment Canada RSS Feed and formats output
 ## @return [condition] temperature
-def get_temperature(city):
+def get_temperature(url_path):
 	
-	xml_blob = dict_lookup(city)
+	xml_blob = data_retriever(url_path)
 	node_list = xml_blob.getElementsByTagName("title")
 	
 	for node in node_list:
